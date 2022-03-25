@@ -37,7 +37,7 @@ func main() {
 	}
 	for e := range q {
 		if t, ok := e.(*mastodon.UpdateEvent); ok {
-			if t.Status.Reblogged == false && len(t.Status.Mentions) == 0 {
+			if t.Status.Reblog == nil && len(t.Status.Mentions) == 0 {
 				if t.Status.Visibility == "public" || t.Status.Visibility == "unlisted" {
 					fmt.Println(t.Status.Account.Acct + ": " + html.UnescapeString(removeTag(t.Status.Content)))
 					snt, key := dajarep.Dajarep(html.UnescapeString(removeTag(t.Status.Content)))
