@@ -7,7 +7,7 @@
 - [x] Streaming API を用いてホームタイムラインを監視（[go-mastodon](https://github.com/mattn/go-mastodon)を利用）
 - [x] 投稿本文にダジャレが含まれているか評価（[dajarep](https://github.com/kurehajime/dajarep)を利用）
 - [x] ダジャレが含まれていたらリプライを送る
-- [ ] フォローしてきたアカウントをフォローする
+- [x] フォローしてきたアカウントをフォローする
 - [ ] 特定条件でフォロー解除
 
 ## 使い方

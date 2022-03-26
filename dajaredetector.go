@@ -74,6 +74,16 @@ func main() {
 			} else {
 				fmt.Print("BT or Reply\n")
 			}
+		} else if t, ok := e.(*mastodon.NotificationEvent); ok {
+			if t.Notification.Type == "follow" {
+				fmt.Printf("followed by %v (ID: %v)\n", t.Notification.Account.Acct, t.Notification.Account.ID)
+				_, err = c.AccountFollow(context.Background(), t.Notification.Account.ID)
+				if err != nil {
+					fmt.Println(err)
+				} else {
+					fmt.Println("follow!")
+				}
+			}
 		}
 	}
 }
