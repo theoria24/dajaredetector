@@ -40,10 +40,18 @@ func main() {
 			if t.Status.Reblog == nil && len(t.Status.Mentions) == 0 {
 				if t.Status.Visibility == "public" || t.Status.Visibility == "unlisted" {
 					fmt.Println(t.Status.Account.Acct + ": " + html.UnescapeString(removeTag(t.Status.Content)))
-					snt, key := dajarep.Dajarep(html.UnescapeString(removeTag(t.Status.Content)), true)
+					snt, key := dajarep.Dajarep(html.UnescapeString(removeTag(t.Status.Content)), 3, true)
 					if snt != nil {
+						cont := "@" + t.Status.Account.Acct + " ダジャレを検出しました（検出ワード: "
+						for i := 0; i < len(key); i++ {
+							if i != 0 {
+								cont += ", "
+							}
+							cont += strings.Join(key[i], ", ")
+						}
+						cont += "）"
 						s, err := c.PostStatus(context.Background(), &mastodon.Toot{
-							Status:      "@" + t.Status.Account.Acct + " ダジャレを検出しました（検出ワード: " + strings.Join(key, ", ") + "）",
+							Status:      cont,
 							InReplyToID: t.Status.ID,
 							Visibility:  t.Status.Visibility,
 						})
