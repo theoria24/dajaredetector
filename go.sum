@@ -23,6 +23,8 @@ github.com/theoria24/dajarep v1.9.6-alpha h1:/S4NUCMvsi3xHLaGTCCYCziyKxOeCO+ll0D
 github.com/theoria24/dajarep v1.9.6-alpha/go.mod h1:p/iqLQgRzLThhc9gryOsOmFMs7XkPfuk3mVCBtb7TnA=
 github.com/theoria24/dajarep v1.9.6-bata h1:wKtg5gkvIFnhFtQVUXewAYcmN3n97oMDf+AZj++Y/gY=
 github.com/theoria24/dajarep v1.9.6-bata/go.mod h1:p/iqLQgRzLThhc9gryOsOmFMs7XkPfuk3mVCBtb7TnA=
+github.com/theoria24/dajarep v1.9.6-gamma h1:Y24eqOV7HRVXvczA1X20C6GNpziVrXJldrWghZ7eBRI=
+github.com/theoria24/dajarep v1.9.6-gamma/go.mod h1:p/iqLQgRzLThhc9gryOsOmFMs7XkPfuk3mVCBtb7TnA=
 github.com/tomnomnom/linkheader v0.0.0-20180905144013-02ca5825eb80 h1:nrZ3ySNYwJbSpD6ce9duiP+QkD3JuLCcWkdaehUS/3Y=
 github.com/tomnomnom/linkheader v0.0.0-20180905144013-02ca5825eb80/go.mod h1:iFyPdL66DjUD96XmzVL3ZntbzcflLnznH0fr99w5VqE=
 github.com/urfave/cli v1.20.0/go.mod h1:70zkFmudgCuE/ngEzBv17Jvp/497gISqfk5gWijbERA=
