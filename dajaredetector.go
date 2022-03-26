@@ -39,8 +39,13 @@ func main() {
 		if t, ok := e.(*mastodon.UpdateEvent); ok {
 			if t.Status.Reblog == nil && len(t.Status.Mentions) == 0 {
 				if t.Status.Visibility == "public" || t.Status.Visibility == "unlisted" {
-					fmt.Println(t.Status.Account.Acct + ": " + html.UnescapeString(removeTag(t.Status.Content)))
-					snt, key := dajarep.Dajarep(html.UnescapeString(removeTag(t.Status.Content)), 3, true)
+					mainText := html.UnescapeString(removeTag(t.Status.SpoilerText))
+					if t.Status.SpoilerText != "" {
+						mainText += " "
+					}
+					mainText += html.UnescapeString(removeTag(t.Status.Content))
+					fmt.Println(t.Status.Account.Acct + ": " + mainText)
+					snt, key := dajarep.Dajarep(mainText, 3, true)
 					if snt != nil {
 						cont := "@" + t.Status.Account.Acct + " ダジャレを検出しました（検出ワード: "
 						for i := 0; i < len(key); i++ {
