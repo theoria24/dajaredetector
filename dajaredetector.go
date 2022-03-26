@@ -10,8 +10,8 @@ import (
 	"strings"
 
 	"github.com/joho/godotenv"
-	"github.com/kurehajime/dajarep"
 	"github.com/mattn/go-mastodon"
+	"github.com/theoria24/dajarep"
 )
 
 func removeTag(str string) string {
@@ -40,7 +40,7 @@ func main() {
 			if t.Status.Reblog == nil && len(t.Status.Mentions) == 0 {
 				if t.Status.Visibility == "public" || t.Status.Visibility == "unlisted" {
 					fmt.Println(t.Status.Account.Acct + ": " + html.UnescapeString(removeTag(t.Status.Content)))
-					snt, key := dajarep.Dajarep(html.UnescapeString(removeTag(t.Status.Content)))
+					snt, key := dajarep.Dajarep(html.UnescapeString(removeTag(t.Status.Content)), true)
 					if snt != nil {
 						s, err := c.PostStatus(context.Background(), &mastodon.Toot{
 							Status:      "@" + t.Status.Account.Acct + " ダジャレを検出しました（検出ワード: " + strings.Join(key, ", ") + "）",

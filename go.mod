@@ -4,8 +4,8 @@ go 1.18
 
 require (
 	github.com/joho/godotenv v1.4.0
-	github.com/kurehajime/dajarep v1.9.5
 	github.com/mattn/go-mastodon v0.0.4
+	github.com/theoria24/dajarep v1.9.6-alpha
 )
 
 require (
