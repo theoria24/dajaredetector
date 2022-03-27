@@ -19,8 +19,8 @@ github.com/mattn/go-isatty v0.0.7/go.mod h1:Iq45c/XA43vh69/j3iqttzPXn0bhXyGjM0Hd
 github.com/mattn/go-mastodon v0.0.4 h1:+F2RbXbHkiBfx6SXMJEvEwZ0i8pI9nMnZhKkvjxq9Rs=
 github.com/mattn/go-mastodon v0.0.4/go.mod h1:ZBkemyyYYhNAN5JJ0H/ZSW8HfPCW45rHFHyWNwSfpTA=
 github.com/mattn/go-tty v0.0.0-20190424173100-523744f04859/go.mod h1:XPvLUNfbS4fJH25nqRHfWLMa1ONC8Amw+mIA639KxkE=
-github.com/theoria24/dajarep v1.9.6-gamma.0.20220326191208-abfbdcf782a1 h1:/7dReu4PEx22uzVh6fVl3wI9J1njP8GO/KF+nu6sO0Y=
-github.com/theoria24/dajarep v1.9.6-gamma.0.20220326191208-abfbdcf782a1/go.mod h1:p/iqLQgRzLThhc9gryOsOmFMs7XkPfuk3mVCBtb7TnA=
+github.com/theoria24/dajarep v1.9.6-gamma.0.20220327024713-3160baeb2dcd h1:GHLAC4YVrgSjEk6e/IpUqy2nOpCg3FoNvOdKkyrGy5Q=
+github.com/theoria24/dajarep v1.9.6-gamma.0.20220327024713-3160baeb2dcd/go.mod h1:p/iqLQgRzLThhc9gryOsOmFMs7XkPfuk3mVCBtb7TnA=
 github.com/tomnomnom/linkheader v0.0.0-20180905144013-02ca5825eb80 h1:nrZ3ySNYwJbSpD6ce9duiP+QkD3JuLCcWkdaehUS/3Y=
 github.com/tomnomnom/linkheader v0.0.0-20180905144013-02ca5825eb80/go.mod h1:iFyPdL66DjUD96XmzVL3ZntbzcflLnznH0fr99w5VqE=
 github.com/urfave/cli v1.20.0/go.mod h1:70zkFmudgCuE/ngEzBv17Jvp/497gISqfk5gWijbERA=
