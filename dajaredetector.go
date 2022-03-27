@@ -34,6 +34,8 @@ func main() {
 	q, err := wsc.StreamingWSUser(context.Background())
 	if err != nil {
 		log.Fatal(err)
+	} else {
+		fmt.Println("Start Watching")
 	}
 	for e := range q {
 		if t, ok := e.(*mastodon.UpdateEvent); ok {
@@ -45,31 +47,44 @@ func main() {
 					}
 					mainText += html.UnescapeString(removeTag(t.Status.Content))
 					fmt.Println(t.Status.Account.Acct + ": " + mainText)
-					snt, key := dajarep.Dajarep(mainText, 3, true)
+					snt, key := dajarep.Dajarep(mainText, 2, true)
 					if snt != nil {
-						cont := "@" + t.Status.Account.Acct + " ダジャレを検出しました（検出ワード: "
-						for i := 0; i < len(key); i++ {
-							if i != 0 {
-								cont += ", "
+						hitKey := []string{}
+						for i := 0; i < len(snt); i++ {
+							if len(key[i]) > 1 {
+								hitKey = append(hitKey, key[i]...)
+							} else {
+								length := 0
+								for j := 0; j < len(key[i]); j++ {
+									if len([]rune(key[i][j])) > length {
+										length = len([]rune(key[i][j]))
+									}
+								}
+								if length > 2 {
+									hitKey = append(hitKey, key[i]...)
+								}
 							}
-							cont += strings.Join(key[i], ", ")
 						}
-						cont += "）"
-						s, err := c.PostStatus(context.Background(), &mastodon.Toot{
-							Status:      cont,
-							InReplyToID: t.Status.ID,
-							Visibility:  t.Status.Visibility,
-						})
-						if err == nil {
-							fmt.Println(s)
+						fmt.Println(hitKey)
+						if len(hitKey) > 0 {
+							s, err := c.PostStatus(context.Background(), &mastodon.Toot{
+								Status:      "@" + t.Status.Account.Acct + " ダジャレを検出しました（検出ワード: " + strings.Join(hitKey, ", ") + "）",
+								InReplyToID: t.Status.ID,
+								Visibility:  t.Status.Visibility,
+							})
+							if err == nil {
+								fmt.Println(s)
+							} else {
+								fmt.Println(err)
+							}
 						} else {
-							fmt.Println(err)
+							fmt.Println("ダジャレだけど条件を満たさない")
 						}
 					} else {
 						fmt.Println("ダジャレじゃない")
 					}
 				} else {
-					fmt.Print("Private Toot\n")
+					fmt.Println("Private Toot")
 				}
 			} else {
 				fmt.Print("BT or Reply\n")
