@@ -14,9 +14,13 @@ import (
 	"github.com/theoria24/dajarep"
 )
 
-func removeTag(str string) string {
+func normalizeText(str string) string {
 	rep := regexp.MustCompile(`<("[^"]*"|'[^']*'|[^'">])*>`)
 	str = rep.ReplaceAllString(str, "")
+	rep = regexp.MustCompile("[˗֊‐‑‒–⁃⁻₋−]+")
+	str = rep.ReplaceAllString(str, "-")
+	rep = regexp.MustCompile("[﹣－ｰ—―─━ー]+")
+	str = rep.ReplaceAllString(str, "ー")
 	return str
 }
 
@@ -41,11 +45,11 @@ func main() {
 		if t, ok := e.(*mastodon.UpdateEvent); ok {
 			if t.Status.Reblog == nil && len(t.Status.Mentions) == 0 {
 				if t.Status.Visibility == "public" || t.Status.Visibility == "unlisted" {
-					mainText := html.UnescapeString(removeTag(t.Status.SpoilerText))
+					mainText := html.UnescapeString(normalizeText(t.Status.SpoilerText))
 					if t.Status.SpoilerText != "" {
 						mainText += " "
 					}
-					mainText += html.UnescapeString(removeTag(t.Status.Content))
+					mainText += html.UnescapeString(normalizeText(t.Status.Content))
 					fmt.Println(t.Status.Account.Acct + ": " + mainText)
 					snt, key := dajarep.Dajarep(mainText, 2, true)
 					if snt != nil {
